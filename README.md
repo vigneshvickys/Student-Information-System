@@ -16,16 +16,16 @@ The project aims to create a system for managing student information, including 
 
 **2.	Backend (Node.js with Express):**
 
-     •	Navigate to the backend directory **(cd backend)**.
+**Step:1** Navigate to the backend directory **(cd backend)**.
 
-     •	Manually install dependencies: **npm install**.
+**Step:2** Manually install dependencies: **npm install**.
 
-     •	Build the project for staging: npm run build_stage.
+**Step:3** Build the project for staging: npm run build_stage.
 
 
 **3.	Database (MongoDB):**
 
-     • Use the **MongoDB connection string from your cd/backend/.env file** to connect to the **MongoDB Atlas cluster**.
+• Use the **MongoDB connection string from your cd/backend/.env file** to connect to the **MongoDB Atlas cluster**.
 
 **Project Deployment:**
 
