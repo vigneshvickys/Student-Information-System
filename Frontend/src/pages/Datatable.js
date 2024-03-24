@@ -30,7 +30,7 @@ const StudentManagement = () => {
     { field: 'Physics', headerName: 'Physics', width: 110, sortable: false },
     { field: 'Chemistry', headerName: 'Chemistry', width: 110, sortable: false },
     { field: 'Cutoff', headerName: 'Cutoff', width: 110, sortable: false },
-   // { field: 'LastUpdatedAt', headerName: 'Last Updated at', width: 110, sortable: false },
+    // { field: 'LastUpdatedAt', headerName: 'Last Updated at', width: 110, sortable: false },
     {
       field: 'actions',
       headerName: 'Actions',
@@ -39,40 +39,40 @@ const StudentManagement = () => {
       renderCell: (params) => (
         <div className="flex items-center gap-3">
           <div
-            onClick={() =>
-              {
-                  handleEdit(params.row)
-                startBriefDetailsedit()
-              }
-              
-              }
+            onClick={() => {
+              handleEdit(params.row)
+              startBriefDetailsedit()
+            }
+
+            }
             className="w-10 h-10 flex items-center justify-center rounded-full shadow-lg cursor-pointer"
             style={{ backgroundColor: '#b29104', color: '#fff', fontSize: 15 }}
           >
             <PencilSquare />
           </div>
           <div
-            onClick={() => 
-              handleDelete(params.row)
-            }
+            onClick={() => handleDelete(params.row)}
             className="w-10 h-10 flex items-center justify-center rounded-full shadow-lg cursor-pointer"
-            style={{ backgroundColor: '#f26262', color: '#fff', fontSize: 15 }}
+            style={{ backgroundColor: "#f26262", color: "#fff", fontSize: 15 }}
           >
-            {
-              deleteloader ? <EditProfileLoader /> : <Trash />
-            }
-            
+            {deleteloadingRows.includes(params.row.id) ? (
+              <EditProfileLoader />
+            ) : (
+              <Trash />
+            )}
           </div>
           <div
             onClick={() => handleSend(params.row)}
             className="w-10 h-10 flex items-center justify-center rounded-full shadow-lg cursor-pointer"
-            style={{ backgroundColor: 'rgb(75 1 121)', color: '#fff', fontSize: 15 }}
+            style={{ backgroundColor: "rgb(75 1 121)", color: "#fff", fontSize: 15 }}
           >
-            {
-              sendloader ? <EditProfileLoader /> :  <SendFill />
-            }
-           
+            {sendLoadingRows.includes(params.row.id) ? (
+              <EditProfileLoader />
+            ) : (
+              <SendFill />
+            )}
           </div>
+
         </div>
       ),
     },
@@ -83,65 +83,65 @@ const StudentManagement = () => {
     { id: 2, sno: 2, Name: 'Cersei Lannister', Email: 'cersei@example.com', DateOfBirth: '1980-01-01', Maths: 85, Physics: 90, Chemistry: 80, Cutoff: 255, LastUpdatedAt: '2024-03-22' },
     // Add more rows
   ];
-  const[student,setstudent]=useState(null);
-  const [deleteloader,setdeleteloader]=useState(false);
-  const [sendloader,setsendloader]=useState(false);
+  const [student, setstudent] = useState(null);
+  const [deleteloadingRows, setDeleteLoadingRows] = useState([]);
+  const [sendLoadingRows, setSendLoadingRows] = useState([]);
+
   const handleEdit = (row) => {
     setOpenModal(true);
     setSelectedRow(row);
-    
+
   };
 
-  const handleDelete = async(row) => {
+  const handleDelete = async (row) => {
     try {
-      setdeleteloader(true);
-      const res = await DeleteStudentApi({"email": row.Email});
+      setDeleteLoadingRows((prev) => [...prev, row.id]); // Set loading state for selected row
+      const res = await DeleteStudentApi({ email: row.Email });
       if (res.status === 200) {
-        if(res.data.status==true || res.data.status==="true"){
+        if (res.data.status == true || res.data.status === "true") {
           toast.success(res.data.message);
           getstudent();
-        }
-        else{
+        } else {
           const message = res.data.message;
-         toast.error(message, { id: 'error' });
+          toast.error(message, { id: "error" });
         }
-        
       }
     } catch (error) {
-      setdeleteloader(false);
       const message = error.response.data.message || error.response.statusText;
-      toast.error(message, { id: 'error' });
+      toast.error(message, { id: "error" });
     } finally {
-      setdeleteloader(false);
-     
+      setDeleteLoadingRows((prev) => prev.filter((id) => id !== row.id)); // Remove loading state for selected row
     }
-   
   };
 
-  const handleSend = async(row) => {
+  const handleSend = async (row) => {
     try {
-      setsendloader(true);
-      const res = await sendEmailStudentApi({"email": row.Email,"name":row.Name,"cutoff":row.Cutoff,"Maths": row.Maths, physics: row.Physics, chemistry:row.Chemistry,});
+      setSendLoadingRows((prev) => [...prev, row.id]); // Set loading state for selected row
+      const res = await sendEmailStudentApi({
+        email: row.Email,
+        name: row.Name,
+        cutoff: row.Cutoff,
+        Maths: row.Maths,
+        physics: row.Physics,
+        chemistry: row.Chemistry,
+      });
       if (res.status === 200) {
-        if(res.data.status==true || res.data.status==="true"){
+        if (res.data.status == true || res.data.status === "true") {
           toast.success(res.data.message);
           //getstudent();
-        }
-        else{
+        } else {
           const message = res.data.message;
-         toast.error(message, { id: 'error' });
+          toast.error(message, { id: "error" });
         }
-        
       }
     } catch (error) {
-      setsendloader(false);
       const message = error.response.data.message || error.response.statusText;
-      toast.error(message, { id: 'error' });
+      toast.error(message, { id: "error" });
     } finally {
-      setsendloader(false);
-     
+      setSendLoadingRows((prev) => prev.filter((id) => id !== row.id)); // Remove loading state for selected row
     }
   };
+
   const startBriefDetails = () => {
     setStartBrief(!startBrief);
   };
@@ -154,7 +154,7 @@ const StudentManagement = () => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     return date.toLocaleDateString('en-US', options);
   }
-  
+
   const getstudent = async () => {
     try {
       setLoader(true);
@@ -165,7 +165,7 @@ const StudentManagement = () => {
           sno: index + 1,
           Name: student.name,
           Email: student.email,
-          dob:student.dob,
+          dob: student.dob,
           DateOfBirth: formatDate(student.dob),
           Maths: student.maths,
           Physics: student.physics,
@@ -189,54 +189,54 @@ const StudentManagement = () => {
       setLoader(false);
     }
   };
-  
+
   useEffect(() => {
     getstudent()
   }, []);
-  
+
   return (
     <div className='d-flex justify-content-center align-items-center min-vh-100 bg-[#0000] studentbg'>
       <FixedHeader title="Student Information System" />
-      <div className='border bg-white shadow m-4 p-4 rounded-lg w-full' style={{height:'73vh'}}>
-      
-      {startBrief && (
-        <SimpleModal
-          title="Add Student"
-          // description="All fields are mandatory"
-          closeModal={startBriefDetails}
-        >
-         <AddStudent  closeModal={startBriefDetails} onrefresh={getstudent} />
-        </SimpleModal>
-      )}
-       {startBriefedit && (
-        <SimpleModal
-          title="Edit Student"
-          // description="All fields are mandatory"
-          closeModal={startBriefDetailsedit}
-        >
-         <EditStudent  closeModal={startBriefDetailsedit} onrefresh={getstudent} data={selectedRow} />
-        </SimpleModal>
-      )}
-       <div className='mt-2 mb-3'>
-       <Button  variant="contained" startIcon={<AddIcon />} onClick={startBriefDetails} >
-         Add Students
-      </Button>
-        
-       </div>
+      <div className='border bg-white shadow m-4 p-4 rounded-lg w-full' style={{ height: '73vh' }}>
+
+        {startBrief && (
+          <SimpleModal
+            title="Add Student"
+            // description="All fields are mandatory"
+            closeModal={startBriefDetails}
+          >
+            <AddStudent closeModal={startBriefDetails} onrefresh={getstudent} />
+          </SimpleModal>
+        )}
+        {startBriefedit && (
+          <SimpleModal
+            title="Edit Student"
+            // description="All fields are mandatory"
+            closeModal={startBriefDetailsedit}
+          >
+            <EditStudent closeModal={startBriefDetailsedit} onrefresh={getstudent} data={selectedRow} />
+          </SimpleModal>
+        )}
+        <div className='mt-2 mb-3'>
+          <Button variant="contained" startIcon={<AddIcon />} onClick={startBriefDetails} >
+            Add Students
+          </Button>
+
+        </div>
         <Box sx={{ width: '100%' }} className=''>
           {
             student &&
             <DataGrid
-            rows={student}
-            columns={columns}
-            initialState={{
-              ...student.initialState,
-              pagination: { paginationModel: { pageSize: 5 } },
-            }}
-            pageSizeOptions={[5, 10, 25]}
-          />
+              rows={student}
+              columns={columns}
+              initialState={{
+                ...student.initialState,
+                pagination: { paginationModel: { pageSize: 5 } },
+              }}
+              pageSizeOptions={[5, 10, 25]}
+            />
           }
-         
+
         </Box>
       </div>
     </div>
