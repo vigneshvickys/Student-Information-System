@@ -6,13 +6,13 @@ The project aims to create a system for managing student information, including 
 
 **1.	Frontend (React.js):**
 
-     •	Clone the project repository from Git.
+     **Step:1**  Clone the project repository from Git.
 
-     •	Navigate to the frontend directory (cd frontend).
+     **Step:2**  Navigate to the frontend directory (cd frontend).
 
-     •	Manually install dependencies: **npm install**
+     **Step:3**  Manually install dependencies: **npm install**
 
-     •	Start the development server: **npm start**
+     **Step:4**  Start the development server: **npm start**
 
 **2.	Backend (Node.js with Express):**
 
