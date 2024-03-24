@@ -1,3 +1,7 @@
+**Project Description:**
+
+The project aims to create a system for managing student information, including personal details and academic performance. It will calculate cutoff marks based on specific criteria, save the data to a MongoDB database, and send email notifications containing student marks and cutoff scores. The system will be developed using React.js for the frontend, Node.js with the Express framework for the backend, and MongoDB for the database.
+
 **Installation Instructions:**
 
 **1.	Frontend (React.js):**
