@@ -16,7 +16,7 @@ The project aims to create a system for managing student information, including 
 
 **2.	Backend (Node.js with Express):**
 
-•	Navigate to the backend directory **(cd backend/.env)**.
+•	Navigate to the backend directory **(cd backend)**.
 
 •	Manually install dependencies: **npm install**.
 
@@ -25,9 +25,7 @@ The project aims to create a system for managing student information, including 
 
 **3.	Database (MongoDB):**
 
-•	If you don't have MongoDB installed, you can use MongoDB Atlas. Create a MongoDB Atlas account and set up a free tier cluster. Copy the connection string provided by MongoDB Atlas.
-
-•	Set up the database and collections as required by the application. Use the MongoDB connection string from your cd/backend/.env file to connect to the MongoDB Atlas cluster.
+• Use the **MongoDB connection string from your cd/backend/.env file** to connect to the **MongoDB Atlas cluster**.
 
 **Project Deployment:**
 
