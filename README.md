@@ -29,8 +29,9 @@ The project aims to create a system for managing student information, including 
 
 **Sample Credentials:**
 
-**Username: vignesh.com
-Password: vignesh**
+**Username: vignesh.com**
+
+**Password: vignesh**
 
 **Project Deployment:**
 
