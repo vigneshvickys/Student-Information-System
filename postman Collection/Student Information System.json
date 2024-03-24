@@ -1,0 +1,57 @@
+{
+	"info": {
+		"_postman_id": "5e7e39d3-08a4-43d4-9c65-4ab209649103",
+		"name": "Rest Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28412241"
+	},
+	"item": [
+		{
+			"name": "Token Gengeration",
+			"item": [
+				{
+					"name": "generatetoken",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "test",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"ganesh@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/admin/client/generatetoken",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"client",
+								"generatetoken"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
