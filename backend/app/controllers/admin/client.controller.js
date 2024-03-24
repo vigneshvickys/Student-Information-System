@@ -8,16 +8,7 @@ const { MailerSend, Sender, Recipient, EmailParams } = require("mailersend");
 
 require('dotenv').config();
 const { JWTSECRET } = process.env;
- // Create a transporter using SMTP transport
- const transporter = nodemailer.createTransport({
-  host: 'smtp.yourmailserver.com',
-  port: 587,
-  secure: false, // true for 465, false for other ports
-  auth: {
-    user: 'guru4567varan@gmail.com',
-    pass: '4567Ram@'
-  }
-});
+ 
 class ClientController {
   async create(req, res) {
     try {
@@ -178,7 +169,7 @@ class ClientController {
                                             <span style="color:#0052e2;font-family:Arial, Helvetica, sans-serif;font-size:30px;vertical-align:bottom;"></span>Student Information System
                                         </p>
 
-                                        <h1 style="margin-top:0;color:#111111;font-size:24px;line-height:36px;font-weight:600;margin-bottom:24px;">Welcome, {$name}!</h1>
+                                        <h1 style="margin-top:0;color:#111111;font-size:24px;line-height:36px;font-weight:600;margin-bottom:24px;">Welcome, ${name}!</h1>
 <div style="text-align: center;">
   <table border="1" style="width: 50%; border-collapse: collapse; margin: 0 auto;">
     <thead>
