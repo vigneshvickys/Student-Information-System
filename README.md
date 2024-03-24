@@ -6,26 +6,26 @@ The project aims to create a system for managing student information, including 
 
 **1.	Frontend (React.js):**
 
-•	Clone the project repository from Git.
+     •	Clone the project repository from Git.
 
-•	Navigate to the frontend directory (cd frontend).
+     •	Navigate to the frontend directory (cd frontend).
 
-•	Manually install dependencies: **npm install**
+     •	Manually install dependencies: **npm install**
 
-•	Start the development server: **npm start**
+     •	Start the development server: **npm start**
 
 **2.	Backend (Node.js with Express):**
 
-•	Navigate to the backend directory **(cd backend)**.
+     •	Navigate to the backend directory **(cd backend)**.
 
-•	Manually install dependencies: **npm install**.
+     •	Manually install dependencies: **npm install**.
 
-•	Build the project for staging: npm run build_stage.
+     •	Build the project for staging: npm run build_stage.
 
 
 **3.	Database (MongoDB):**
 
-• Use the **MongoDB connection string from your cd/backend/.env file** to connect to the **MongoDB Atlas cluster**.
+     • Use the **MongoDB connection string from your cd/backend/.env file** to connect to the **MongoDB Atlas cluster**.
 
 **Project Deployment:**
 
