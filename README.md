@@ -27,6 +27,11 @@ The project aims to create a system for managing student information, including 
 
 • Use the **MongoDB connection string from your cd/backend/.env file** to connect to the **MongoDB Atlas cluster**.
 
+**Sample Credentials:**
+
+**Username: vignesh.com
+Password: vignesh**
+
 **Project Deployment:**
 
 Once the project is built and configured locally, it can be deployed to a hosting service such as Heroku for public access. Ensure to set up environment variables and configuration files properly for deployment.
