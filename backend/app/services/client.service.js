@@ -27,8 +27,7 @@ class ClientService {
   }
   async findByEmailAndPassword(email, password, currentDb) {
     try {
-      const ClientModel = Client.getModel(currentDb);
-      const client = await ClientModel.findOne({ Email: email, Password: password });
+      const client = await Client.findOne({ Email: email, Password: password });
       return client;
     } catch (error) {
       console.error('Error finding client by email and password:', error);
