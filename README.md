@@ -20,7 +20,7 @@ The project aims to create a system for managing student information, including 
 
 **Step:2** Manually install dependencies: **npm install**.
 
-**Step:3** Build the project for staging: npm run build_stage.
+**Step:3** Build the project for staging: **npm run start**.
 
 
 **3.	Database (MongoDB):**
