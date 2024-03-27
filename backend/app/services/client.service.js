@@ -5,7 +5,7 @@ const message = require('../messages/message');
 class ClientService {
   async create(clientObj, currentDb) {
     try {
-      const client = new (Client.getModel(currentDb))(clientObj);
+      const client = new Client(clientObj);
       return await client.save();
     } catch (error) {
       if (error.code === 11000) {
