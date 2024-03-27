@@ -14,7 +14,6 @@ const clientSchema = new Schema({
 
 }, { timestamps: true });
 
-// const Client = mongoose.model('client', clientSchema);
-const Client = new UnifiedModel('admin', clientSchema);
+const Client = mongoose.model('admin', clientSchema);
 
 module.exports = Client;
