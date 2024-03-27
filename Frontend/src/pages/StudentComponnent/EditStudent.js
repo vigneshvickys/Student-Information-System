@@ -122,6 +122,7 @@ const EditStudent = ({ closeModal,onrefresh,data }) => {
             <label className="form-label">Email:</label>
             <input
               type="text"
+              disabled=true
               className={
                 Boolean(formik.touched?.email) &&
                 Boolean(formik.errors?.email)
